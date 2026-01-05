@@ -2,7 +2,7 @@
 
 # STARFIND
 
-** 继承原生 `ls` 命令输出，支持为常用项目管理星标标记**
+**继承原生 `ls` 命令输出，支持为常用项目管理星标标记**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-blue.svg)](https://www.typescriptlang.org/)

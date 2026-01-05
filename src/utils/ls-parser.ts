@@ -5,11 +5,27 @@ import { isStarred } from './config.js';
 const STAR_EMOJI = '⭐️';
 
 /**
+ * 获取强制颜色输出的 ls 参数
+ */
+function getColorFlag(): string {
+  // macOS 使用 BSD ls，需要 -G 参数
+  if (process.platform === 'darwin') {
+    return '-G';
+  }
+  // Linux 使用 GNU ls，支持 --color=always
+  return '--color=always';
+}
+
+/**
  * 执行 ls 命令并获取输出
  */
 export function executeLs(args: string[] = [], cwd: string = process.cwd()): string {
   try {
-    const command = `ls ${args.join(' ')}`;
+    // 添加颜色参数以保留原生 ls 的颜色输出
+    const colorFlag = getColorFlag();
+    const allArgs = [colorFlag, ...args].join(' ');
+    const command = `ls ${allArgs}`;
+
     const output = execSync(command, {
       cwd,
       encoding: 'utf-8',
